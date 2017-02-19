@@ -16,6 +16,19 @@ mkdir -p /usr/lib/zabbix/modules
 LoadModulePath=/usr/lib/zabbix/modules
 LoadModule=tcp_state.so
 
+# By default, the packages will create a /etc/zabbix/zabbix_agentd.d/modules.conf file with parameters above.
+
+
+
+
+
+# restart zabbix-agent service
+systemctl restart zabbix-agent.service
+
+
+
+# You can test it like this for example if you configured a Zabbix agent to load the module:
+zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf -t net.tcp.count[10051]
 
 
 
